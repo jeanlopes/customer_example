@@ -1,0 +1,34 @@
+﻿@model CustomerExample.Application.DTOs.CustomerDTO
+
+<h1>Delete Customer</h1>
+
+<h4>Are you sure you want to delete this customer?</h4>
+
+<div>
+    <h4>Id:</h4>
+    <p>@Model.Id</p>
+</div>
+
+<div>
+    <h4>Name:</h4>
+    <p>@Model.Name</p>
+</div>
+
+<div>
+    <h4>Email:</h4>
+    <p>@Model.Email</p>
+</div>
+
+<div>
+    <h4>Logo:</h4>
+    <p><img src="~/@Model.LogoPath" width="50" height="50" alt="Logo" /></p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <p>
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </p>
+</form>

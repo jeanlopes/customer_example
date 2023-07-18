@@ -1,0 +1,12 @@
+D:\workspace\customer_example\CustomerExample.Domain\bin\Debug\net7.0\CustomerExample.Domain.deps.json
+D:\workspace\customer_example\CustomerExample.Domain\bin\Debug\net7.0\CustomerExample.Domain.dll
+D:\workspace\customer_example\CustomerExample.Domain\bin\Debug\net7.0\CustomerExample.Domain.pdb
+D:\workspace\customer_example\CustomerExample.Domain\obj\Debug\net7.0\CustomerExample.Domain.csproj.AssemblyReference.cache
+D:\workspace\customer_example\CustomerExample.Domain\obj\Debug\net7.0\CustomerExample.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\workspace\customer_example\CustomerExample.Domain\obj\Debug\net7.0\CustomerExample.Domain.AssemblyInfoInputs.cache
+D:\workspace\customer_example\CustomerExample.Domain\obj\Debug\net7.0\CustomerExample.Domain.AssemblyInfo.cs
+D:\workspace\customer_example\CustomerExample.Domain\obj\Debug\net7.0\CustomerExample.Domain.csproj.CoreCompileInputs.cache
+D:\workspace\customer_example\CustomerExample.Domain\obj\Debug\net7.0\CustomerExample.Domain.dll
+D:\workspace\customer_example\CustomerExample.Domain\obj\Debug\net7.0\refint\CustomerExample.Domain.dll
+D:\workspace\customer_example\CustomerExample.Domain\obj\Debug\net7.0\CustomerExample.Domain.pdb
+D:\workspace\customer_example\CustomerExample.Domain\obj\Debug\net7.0\ref\CustomerExample.Domain.dll

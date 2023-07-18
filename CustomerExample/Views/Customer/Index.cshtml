@@ -1,0 +1,35 @@
+﻿@model IEnumerable<CustomerExample.Application.DTOs.CustomerDTO>
+
+<h1>Customer List</h1>
+
+<p>
+    <a asp-action="Create">Criar novo cliente</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Logo</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.Id</td>
+                <td>@customer.Name</td>
+                <td>@customer.Email</td>
+                <td><img src="~/@customer.LogoPath" width="50" height="50" alt="Logo" /></td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@customer.Id">Detalhes</a> |
+                    <a asp-action="Edit" asp-route-id="@customer.Id">Editar</a> |
+                    <a asp-action="Delete" asp-route-id="@customer.Id">Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

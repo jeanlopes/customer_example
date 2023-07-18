@@ -1,0 +1,124 @@
+﻿@model CustomerExample.Application.DTOs.CustomerEditDTO
+
+<h1>Editar Cliente</h1>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="Name">Name:</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email">Email:</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Logo">Logo:</label>
+        <input asp-for="Logo" type="file" class="form-control-file" />
+        <span asp-validation-for="Logo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="streetInput">Logradouros:</label>
+        <input id="streetInput" class="form-control" />
+        <button id="addStreetBtn" class="btn btn-primary mt-2">Add Street</button>
+        <ul id="streetList" class="list-group">
+            <!-- Rendered streets will be added here -->
+        </ul>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-action="Index" class="btn btn-secondary">Voltar para a lista</a>
+</form>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            var streetList = document.getElementById('streetList');
+            var streetInput = document.getElementById('streetInput');
+            var addStreetButton = document.getElementById('addStreetBtn');
+
+            // Add event listener for the add street button
+            addStreetButton.addEventListener("click", addStreet);
+
+            // Add street to the list
+
+            function addStreet(event) {
+                event.preventDefault();
+                var street = streetInput.value.trim();
+                if (street !== '') {
+                    axios.post('/api/address', { street: street, customerid: @Model.Id })
+                        .then(function (response) {
+                            
+                            getStreets();
+                            showNotification("Logradouro adicionado com sucesso", "success");
+                            
+                        })
+                        .catch(function(error){
+                            showNotification("Erro ao adicionar logradouro", "error");
+                            console.error(error);
+                        });
+                }
+            }
+
+            // Function to remove a street from the list
+            function removeStreet(id) {
+                                
+                axios.delete('/api/address/' + id)
+                    .then(function (response) {
+                        if (response.status === 204) {
+                            streetItem.remove();
+                            showNotification("Logradouro removido com sucesso.", "success");
+                        }
+                    })
+                    .catch(function (error) {
+                        showNotification("Erro ao remover logradouro", "error");
+                        console.error(error);
+                    });                                    
+            }                       
+
+            function getStreets() {
+                axios.get('/api/address/' + @Model.Id)
+                    .then(function(response) {
+                        var streets = response.data;
+                        streetList.innerHTML = '';
+                        streets.forEach(function (street) {
+                            
+                            const listItem = document.createElement('li');
+                            listItem.className = 'list-group-item';
+                            listItem.textContent = street.street;
+
+                            const removeBtn = document.createElement('button');
+                            removeBtn.className = 'btn btn-danger btn-sm float-end';
+                            removeBtn.textContent = 'Remove';
+                            removeBtn.addEventListener('click', function () {
+                                listItem.remove();
+                                removeStreet(street.id);
+                            });
+
+                            listItem.appendChild(removeBtn);
+                            streetList.appendChild(listItem);
+                        });
+                    })
+                    .catch(function (error) {
+                        showNotification("Erro ao obter os logradouros", "error");
+                        console.error(error);
+                    });                    
+
+            }
+
+            // Call the getStreets function to populate the initial streets
+            getStreets();
+
+        });
+    </script>
+}

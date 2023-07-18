@@ -1,0 +1,17 @@
+D:\workspace\customer_example\CustomerExample.Infrastructure\bin\Debug\net7.0\CustomerExample.Infrastructure.deps.json
+D:\workspace\customer_example\CustomerExample.Infrastructure\bin\Debug\net7.0\CustomerExample.Infrastructure.runtimeconfig.json
+D:\workspace\customer_example\CustomerExample.Infrastructure\bin\Debug\net7.0\CustomerExample.Infrastructure.dll
+D:\workspace\customer_example\CustomerExample.Infrastructure\bin\Debug\net7.0\CustomerExample.Infrastructure.pdb
+D:\workspace\customer_example\CustomerExample.Infrastructure\bin\Debug\net7.0\CustomerExample.Domain.dll
+D:\workspace\customer_example\CustomerExample.Infrastructure\bin\Debug\net7.0\CustomerExample.Domain.pdb
+D:\workspace\customer_example\CustomerExample.Infrastructure\obj\Debug\net7.0\CustomerExample.Infrastructure.csproj.AssemblyReference.cache
+D:\workspace\customer_example\CustomerExample.Infrastructure\obj\Debug\net7.0\CustomerExample.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\workspace\customer_example\CustomerExample.Infrastructure\obj\Debug\net7.0\CustomerExample.Infrastructure.AssemblyInfoInputs.cache
+D:\workspace\customer_example\CustomerExample.Infrastructure\obj\Debug\net7.0\CustomerExample.Infrastructure.AssemblyInfo.cs
+D:\workspace\customer_example\CustomerExample.Infrastructure\obj\Debug\net7.0\CustomerExample.Infrastructure.csproj.CoreCompileInputs.cache
+D:\workspace\customer_example\CustomerExample.Infrastructure\obj\Debug\net7.0\CustomerExample.Infrastructure.csproj.CopyComplete
+D:\workspace\customer_example\CustomerExample.Infrastructure\obj\Debug\net7.0\CustomerExample.Infrastructure.dll
+D:\workspace\customer_example\CustomerExample.Infrastructure\obj\Debug\net7.0\refint\CustomerExample.Infrastructure.dll
+D:\workspace\customer_example\CustomerExample.Infrastructure\obj\Debug\net7.0\CustomerExample.Infrastructure.pdb
+D:\workspace\customer_example\CustomerExample.Infrastructure\obj\Debug\net7.0\CustomerExample.Infrastructure.genruntimeconfig.cache
+D:\workspace\customer_example\CustomerExample.Infrastructure\obj\Debug\net7.0\ref\CustomerExample.Infrastructure.dll

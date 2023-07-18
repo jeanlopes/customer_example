@@ -1,0 +1,115 @@
+﻿@model CustomerExample.Application.DTOs.CustomerDTO
+
+<h1>Criar cliente</h1>
+
+<form id="customerForm" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Name">Name:</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email">Email:</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Logo">Logo:</label>
+        <input asp-for="Logo" type="file" class="form-control-file" />
+        <span asp-validation-for="Logo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="streetInput">Streets:</label>
+        <input id="streetInput" class="form-control" />
+        <button id="addStreetBtn" class="btn btn-primary mt-2">Add Street</button>
+    </div>
+
+    <div class="form-group">
+        <label>Street List:</label>
+        <ul id="streetList" class="list-group">
+            <!-- Rendered streets will be added here -->
+        </ul>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</form>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get form element
+            const form = document.getElementById('customerForm');
+
+            // Add event listener for form submit
+            form.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent automatic form submission
+
+                // Parse form data
+                const formData = new FormData(form);
+
+                // Convert file input value to File object
+                const logoInput = document.getElementById('Logo');
+                const logoFile = logoInput.files[0];
+                formData.set('Logo', logoFile);
+
+                // Convert street list to array
+                const streetList = Array.from(document.querySelectorAll('#streetList li'));
+                const streets = streetList.map(item => item.textContent);
+
+                // Add streets to form data
+                streets.forEach((street, index) => {
+                    formData.append(`Streets[${index}].Street`, street);
+                });
+
+                // Make POST request using Axios
+                axios.post('@Url.Action("Create")', formData)
+                    .then(function (response) {
+                        // Handle success response                        
+                            window.location.href = '/Customer/';
+                    })
+                    .catch(function (error) {
+                        // Handle error response
+                        console.error(error);
+                        // Display error message to the user
+                        showNotification(error.message, 'error');
+                    });
+            });
+
+            // Add event listener for "Add Street" button
+            const addStreetBtn = document.getElementById('addStreetBtn');
+            addStreetBtn.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                const streetInput = document.getElementById('streetInput');
+                const street = streetInput.value.trim();
+
+                if (street) {
+                    const streetList = document.getElementById('streetList');
+
+                    const listItem = document.createElement('li');
+                    listItem.className = 'list-group-item';
+                    listItem.textContent = street;
+
+                    const removeBtn = document.createElement('button');
+                    removeBtn.className = 'btn btn-danger btn-sm float-end';
+                    removeBtn.textContent = 'Remove';
+                    removeBtn.addEventListener('click', function () {
+                        listItem.remove();
+                    });
+
+                    listItem.appendChild(removeBtn);
+                    streetList.appendChild(listItem);
+
+                    streetInput.value = '';
+                }
+            });
+        });
+    </script>
+}
